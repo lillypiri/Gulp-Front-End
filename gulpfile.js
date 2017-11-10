@@ -68,7 +68,7 @@ gulp.task("build", ['clean', 'styles', 'scripts', 'images'], () => {
 });
 
 // Run build, start the server and watchs for changes to sass files.
-  gulp.task("default", ['build'], function() {
+  gulp.task("default", ['build'], () => {
     browserSync.init({ server: { baseDir: "./" } });
     gulp.watch("sass/*", ["styles"])
     // serve to server
