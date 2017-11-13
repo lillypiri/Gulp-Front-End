@@ -31,9 +31,9 @@ gulp.task('scripts', () => {
       .src(["js/**/*.js"])
       .pipe(maps.init())
       .pipe(concat("js/app.js"))
-      .pipe(maps.write())
       .pipe(uglify())
       .pipe(rename("all.min.js"))
+      .pipe(maps.write("."))
       .pipe(gulp.dest("dist/scripts"));
 })
 
@@ -43,11 +43,11 @@ gulp.task("styles", () => {
       .src("sass/global.scss")
       .pipe(maps.init())
       .pipe(sass())
-      .pipe(maps.write("./"))
       .pipe(minify())
       .pipe(rename("all.min.css"))
+      .pipe(maps.write("./"))
       .pipe(gulp.dest("dist/styles"))
-      .on('end', browserSync.reload)
+      .on("end", browserSync.reload);
 })
 
 // Cleans up dist folder before doing all the things. 
